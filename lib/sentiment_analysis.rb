@@ -21,6 +21,6 @@ class SentimentAnalysis
   end
 
   def words
-    @words ||= @content.split.freeze
+    @words ||= @content.split.map { |word| word.downcase.gsub(/[^a-z]/, '') }.freeze
   end
 end

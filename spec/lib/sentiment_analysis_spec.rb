@@ -13,9 +13,15 @@ RSpec.describe(SentimentAnalysis) do
     end
 
     context 'positive content' do
-      let(:content) { 'I love ruby and softend' }
+      let(:content) { 'I love ruby and softeng' }
 
       it { is_expected.to be > 0 }
+
+      context 'with punctuation' do
+        let(:content) { 'I !love! ruby' }
+
+        it { is_expected.to be > 0 }
+      end
     end
   end
 end

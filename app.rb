@@ -2,8 +2,13 @@ require 'json'
 require_relative 'lib/sentiment_analysis'
 
 before do
-  request.body.rewind
-  @json = JSON.parse(request.body.read)
+  begin
+    request.body.rewind
+    @json = JSON.parse(request.body.read)
+  rescue JSON::ParserError
+    # This is for the empty/non-json request body
+    nil
+  end
 end
 
 post '/sentiment' do

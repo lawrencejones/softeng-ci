@@ -1,7 +1,3 @@
 machine:
   ruby:
     version: '2.2.3'
-
-test:
-  override:
-    - find spec -name "*_spec.rb" -print0 | xargs -0 bundle exec rspec

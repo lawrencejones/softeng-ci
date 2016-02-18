@@ -4,8 +4,11 @@
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
     integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
     crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="/app.js"></script>
   </head>
-  <body>
+  <body ng-app="softeng" ng-controller="SentimentController">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -16,8 +19,17 @@
       <div class="row">
         <div class="col-md-12">
           <p>Enter a sentence to score for sentiment:</p>
-          <textarea rows="6" placeholder="Content goes here...">
-          </textarea>
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="input.content">
+            <span ng-show="!!score" class="input-group-addon">
+              <span class="badge">
+                {{ score }}
+              </span>
+            </span>
+            <span class="input-group-btn">
+              <button ng-click="checkSentiment(input.content)" class="btn btn-default" type="button">Score!</button>
+            </span>
+          </div>
         </div>
       </div>
     </div>
